@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meu Painel — PsiCEP</title>
+  <link rel="stylesheet" href="style/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon">🌿</div>
+        <h2>PsiCEP</h2>
+        <p>Aluno</p>
+      </div>
+      <div class="nav-label">Menu</div>
+      <div class="nav-item active" onclick="showSection('inicio')">
+        <span class="nav-icon">🏠</span> Início
+      </div>
+      <div class="nav-item" onclick="showSection('solicitar')">
+        <span class="nav-icon">📋</span> Solicitar consulta
+      </div>
+      <div class="nav-item" onclick="showSection('historico')">
+        <span class="nav-icon">📅</span> Histórico
+      </div>
+      <div class="sidebar-footer">
+        <div class="sidebar-user">
+          <div class="avatar" id="sidebarAvatar">?</div>
+          <div class="sidebar-user-info">
+            <p id="sidebarNome">—</p>
+            <span id="sidebarMatricula">—</span>
+          </div>
+        </div>
+        <button class="btn-logout" onclick="logout()">⬅ Sair</button>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <div style="display:flex;flex-direction:column;flex:1;overflow:hidden">
+      <div class="panel-topbar">
+        <span class="topbar-title" id="topbarTitle">Início</span>
+        <div class="flex-center gap-8">
+          <div class="avatar" id="topAvatar" style="width:30px;height:30px;font-size:12px">?</div>
+        </div>
+      </div>
+
+      <main class="main-content">
+        <!-- INÍCIO -->
+        <section id="sec-inicio">
+          <div class="page-header fade-up">
+            <h1>Olá, <span id="nomeHeader">—</span> 👋</h1>
+            <p>Aqui está um resumo do seu atendimento psicológico.</p>
+          </div>
+
+          <div class="stats-grid fade-up-2" id="statsAluno"></div>
+
+          <div class="card fade-up-3">
+            <div class="section-header">
+              <h2>Consultas recentes</h2>
+              <button class="btn btn-accent btn-sm" onclick="showSection('solicitar')">+ Nova solicitação</button>
+            </div>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Motivo</th>
+                    <th>Data preferencial</th>
+                    <th>Turno</th>
+                    <th>Status</th>
+                    <th>Criado em</th>
+                  </tr>
+                </thead>
+                <tbody id="tabelaRecentes"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- SOLICITAR -->
+        <section id="sec-solicitar" class="hidden">
+          <div class="page-header fade-up">
+            <h1>Solicitar Consulta</h1>
+            <p>Preencha as informações abaixo para solicitar um agendamento.</p>
+          </div>
+          <div class="card fade-up-2" style="max-width:560px">
+            <div id="alertSolicitar"></div>
+            <form id="formSolicitar">
+              <div class="form-group">
+                <label class="form-label">Motivo da consulta *</label>
+                <textarea id="motivo" class="form-control" rows="3" placeholder="Descreva brevemente o motivo..." required></textarea>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label">Data preferencial *</label>
+                  <input type="date" id="dataPreferencial" class="form-control" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Horário preferencial *</label>
+                  <input type="time" id="horario" class="form-control" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Turno *</label>
+                <select id="turno" class="form-control" required>
+                  <option value="">Selecione...</option>
+                  <option>manhã</option>
+                  <option>tarde</option>
+                  <option>noite</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Observações adicionais</label>
+                <textarea id="obsAluno" class="form-control" rows="2" placeholder="Opcional..."></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-full">Enviar solicitação</button>
+            </form>
+          </div>
+        </section>
+
+        <!-- HISTÓRICO -->
+        <section id="sec-historico" class="hidden">
+          <div class="page-header fade-up">
+            <h1>Histórico de Consultas</h1>
+            <p>Todas as suas solicitações e consultas registradas.</p>
+          </div>
+          <div class="filter-bar fade-up-2" id="filterBarAluno">
+            <span class="filter-chip active" data-status="todos">Todas</span>
+            <span class="filter-chip" data-status="aguardando">Aguardando</span>
+            <span class="filter-chip" data-status="confirmada">Confirmadas</span>
+            <span class="filter-chip" data-status="realizada">Realizadas</span>
+            <span class="filter-chip" data-status="cancelada">Canceladas</span>
+            <span class="filter-chip" data-status="nao_compareceu">Não compareceu</span>
+          </div>
+          <div class="card fade-up-3">
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Motivo</th>
+                    <th>Data preferencial</th>
+                    <th>Turno / Horário</th>
+                    <th>Status</th>
+                    <th>Obs. psicóloga</th>
+                  </tr>
+                </thead>
+                <tbody id="tabelaHistorico"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="js/dados.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/aluno.js"></script>
+</body>
+</html>

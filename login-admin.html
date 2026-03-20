@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Admin — PsiCEP</title>
+  <link rel="stylesheet" href="style/style.css" />
+</head>
+<body>
+  <div class="auth-page">
+    <div class="auth-box fade-up">
+      <div class="auth-brand">
+        <div class="brand-icon" style="background:var(--accent)">🩺</div>
+        <span>PsiCEP · Admin</span>
+      </div>
+      <h2>Acesso Restrito</h2>
+      <p class="auth-sub">Área exclusiva para psicóloga e administradores.</p>
+
+      <div id="alertBox"></div>
+
+      <form id="formAdmin">
+        <div class="form-group">
+          <label class="form-label">Usuário</label>
+          <input type="text" id="usuario" class="form-control" placeholder="admin" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Senha</label>
+          <input type="password" id="senha" class="form-control" placeholder="Senha de administrador" required />
+        </div>
+        <div class="alert alert-info" style="font-size:13px;">
+          💡 Acesso demo: usuário <strong>admin</strong> · senha <strong>admin123</strong>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full mt-16">Entrar como Admin</button>
+      </form>
+
+      <div class="auth-footer">
+        <a href="index.html">← Voltar para início</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/dados.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>

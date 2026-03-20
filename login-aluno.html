@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Aluno — PsiCEP</title>
+  <link rel="stylesheet" href="style/style.css" />
+</head>
+<body>
+  <div class="auth-page">
+    <div class="auth-box fade-up">
+      <div class="auth-brand">
+        <div class="brand-icon">🌿</div>
+        <span>PsiCEP</span>
+      </div>
+      <h2>Acesso do Aluno</h2>
+      <p class="auth-sub">Entre com sua matrícula e senha.</p>
+
+      <div id="alertBox"></div>
+
+      <!-- Troca de senha (primeiro login) -->
+      <div id="trocaSenha" class="hidden">
+        <div class="alert alert-info mb-16">
+          🔒 Este é seu primeiro acesso. Defina uma nova senha para continuar.
+        </div>
+        <div class="form-group">
+          <label class="form-label">Nova senha *</label>
+          <input type="password" id="novaSenha" class="form-control" placeholder="Mínimo 6 caracteres" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Confirmar nova senha *</label>
+          <input type="password" id="confirmaSenha" class="form-control" placeholder="Repita a senha" />
+        </div>
+        <button class="btn btn-primary btn-full" id="btnTrocaSenha">Salvar e entrar</button>
+      </div>
+
+      <form id="formLogin">
+        <div class="form-group">
+          <label class="form-label">Matrícula</label>
+          <input type="text" id="matricula" class="form-control" placeholder="Ex: 2024001" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Senha</label>
+          <input type="password" id="senha" class="form-control" placeholder="Sua senha" required />
+        </div>
+        <button type="submit" class="btn btn-primary btn-full mt-8">Entrar</button>
+      </form>
+
+      <div class="auth-footer">
+        Não tem cadastro? <a href="cadastro.html">Criar cadastro</a>
+        &nbsp;·&nbsp;<a href="index.html">Voltar</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/dados.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>

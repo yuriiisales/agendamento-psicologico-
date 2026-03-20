@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PsiCEP — Agendamento Psicológico</title>
+  <link rel="stylesheet" href="style/style.css" />
+</head>
+<body>
+  <div class="landing">
+    <!-- LEFT -->
+    <div class="landing-left">
+      <span class="brand-badge">🌿 SENAC · CEP</span>
+      <h1>
+        Cuidado<br/>
+        que <em>começa</em><br/>
+        por você.
+      </h1>
+      <p>
+        O PsiCEP é o sistema de agendamento psicológico do CEP SENAC.
+        Solicite atendimento, acompanhe suas consultas e cuide da sua saúde mental com facilidade.
+      </p>
+
+      <div style="margin-top:48px; display:flex; gap:24px; flex-wrap:wrap;">
+        <div style="text-align:center;">
+          <div style="font-family:'DM Serif Display',serif;font-size:28px;color:#fff;">+120</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.6px;">Atendimentos</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-family:'DM Serif Display',serif;font-size:28px;color:#fff;">98%</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.6px;">Satisfação</div>
+        </div>
+        <div style="text-align:center;">
+          <div style="font-family:'DM Serif Display',serif;font-size:28px;color:#fff;">24h</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.6px;">Resp. cadastro</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="landing-right">
+      <h2>Como deseja entrar?</h2>
+      <p class="sub">Escolha seu perfil de acesso abaixo.</p>
+
+      <div class="landing-cards fade-up">
+        <div class="landing-card" onclick="Utils.go('login-aluno.html')">
+          <div class="lc-icon green">🎓</div>
+          <div>
+            <h3>Sou Aluno</h3>
+            <p>Acesse seu painel, solicite ou acompanhe consultas.</p>
+          </div>
+        </div>
+
+        <div class="landing-card" onclick="Utils.go('login-admin.html')">
+          <div class="lc-icon dark" style="color:#fff;">🩺</div>
+          <div>
+            <h3>Sou Psicóloga / Admin</h3>
+            <p>Gerencie agendamentos, aprovações e dashboard.</p>
+          </div>
+        </div>
+
+        <div class="landing-sep">Ainda não tem cadastro?</div>
+
+        <div class="landing-card" onclick="Utils.go('cadastro.html')">
+          <div class="lc-icon blue">✏️</div>
+          <div>
+            <h3>Criar Cadastro</h3>
+            <p>Preencha o formulário e aguarde aprovação.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/dados.js"></script>
+  <script src="js/utils.js"></script>
+</body>
+</html>
